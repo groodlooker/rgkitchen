@@ -121,14 +121,20 @@ export const CoreSDKFunctions = () => {
     try {
       const value = await core40SDK.ok(
         core40SDK.run_inline_query({
-          result_format: 'json_detail',
+          result_format: 'json',
           limit: 10,
           body: {
             total: true,
-            model: 'thelook',
-            view: 'users',
-            fields: ['last_name', 'gender'],
-            sorts: [`last_name desc`],
+            model: 'Ancillary',
+            view: 'ticket_emd',
+            fields: [
+              "ticket_emd.market",
+              "ticket_emd.quantity_Sold"
+            ],
+            sorts: [
+              "ticket_emd.quantity_Sold desc"
+            ],
+            limit: '10'
           },
         })
       )
